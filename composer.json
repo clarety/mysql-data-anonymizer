@@ -1,11 +1,15 @@
 {
-	"name": "globalis/mySQL-data-anonymizer",
+	"name": "N3XT0R/mySQL-data-anonymizer",
     "description": "Anonymize sensitive datas in test database",
     "type": "library",
     "authors": [
         {
             "name": "Heng ZENG",
             "email": "heng.zeng@globalis-ms.com"
+        },
+        {
+            "name": "Ilya Beliaev",
+            "email": "info@php-dev.info"
         }
     ],
     "require": {
