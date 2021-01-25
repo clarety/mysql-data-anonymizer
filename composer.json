@@ -1,5 +1,5 @@
 {
-	"name": "N3XT0R/mySQL-data-anonymizer",
+	"name": "N3XT0R/mysql-data-anonymizer",
     "description": "Anonymize sensitive datas in test database",
     "type": "library",
     "authors": [
