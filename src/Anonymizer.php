@@ -60,7 +60,7 @@ class Anonymizer
         $this->load_providers();
     }
 
-    protected function load_config()
+    protected function load_config():void
     {
         try {
             if (!file_exists(__DIR__ . "/../config/config.php")) {
@@ -79,19 +79,12 @@ class Anonymizer
              ];
 
             foreach ($this->config as $parameter => $value) {
-                if (!$value) {
+                if (!$value && 'DB_PASSWORD' !== $parameter) {
                     throw new Exception($parameter . ' can not be empty.');
-                    continue;
                 }
-                if (in_array($parameter, ['NB_MAX_MYSQL_CLIENT', 'NB_MAX_MYSQL_CLIENT'])) {
-                    if (!is_int($value)) {
-                        throw new Exception($parameter . ' should be integer.');
-                    }
+                if (in_array($parameter, ['NB_MAX_MYSQL_CLIENT', 'NB_MAX_MYSQL_CLIENT']) && !is_int($value)) {
+                    throw new Exception($parameter . ' should be integer.');
                 }
-            }
-
-            if (!filter_var($this->config['DB_HOST'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                throw new Exception('DB_HOST is not valid.');
             }
         } catch (Exception $e) {
             echo 'Exception: ' . $e->getMessage(). PHP_EOL;

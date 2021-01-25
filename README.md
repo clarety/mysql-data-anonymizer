@@ -175,3 +175,6 @@ $anonymizer->table('users', function ($table) {
     });
 }
 ```
+
+forked from globalis-ms
+
