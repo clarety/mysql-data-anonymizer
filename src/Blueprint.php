@@ -245,7 +245,7 @@ class Blueprint
      */
     public function primary($key)
     {
-        $this->primary = (array) $this->table.'.'.$key;
+        $this->primary = (array)$key;
 
         return $this;
     }
