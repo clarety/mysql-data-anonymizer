@@ -330,10 +330,14 @@ class Anonymizer
         if(!($columns ?? false)) {
             $columns = implode(',', array_merge($blueprint->primary, array_column($blueprint->columns, 'name')));
         }
-        $sql = "SELECT {$columns} FROM {$table}";
+        $sql = "SELECT {$columns} FROM {$table} ";
+        $joins = $blueprint->getJoins();
+        if (count($joins) > 0) {
+            $sql .= implode(PHP_EOL, $joins);
+        }
 
-        if($blueprint->globalWhere) {
-            $sql .= " WHERE " . $blueprint->globalWhere;
+        if (count($blueprint->globalWhere) > 0) {
+            $sql .= " WHERE " . implode(' AND ', $blueprint->globalWhere);
         }
 
         return $this->mysql_pool->query($sql);
