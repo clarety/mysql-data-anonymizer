@@ -38,6 +38,8 @@ class Anonymizer
      */
     protected $blueprints = [];
 
+    protected $configPath = '';
+
     /**
      * Constructor.
      *
@@ -60,13 +62,33 @@ class Anonymizer
         $this->load_providers();
     }
 
+    /**
+     * @return string
+     */
+    public function getConfigPath(): string
+    {
+        if(empty($this->configPath)){
+            $this->setConfigPath(__DIR__ . "/../config/config.php");
+        }
+        return $this->configPath;
+    }
+
+    /**
+     * @param string $configPath
+     */
+    public function setConfigPath(string $configPath): void
+    {
+        $this->configPath = $configPath;
+    }
+
     protected function load_config():void
     {
+        $configPath = $this->getConfigPath();
         try {
-            if (!file_exists(__DIR__ . "/../config/config.php")) {
+            if (!file_exists($configPath)) {
                 throw new Exception('config.php not found in the directory.');
             }
-            $this->config = require __DIR__ . "/../config/config.php";
+            $this->config = require $configPath;
 
              $this->config = [
                 'DB_HOST'                   => $this->config['DB_HOST'] ?? '127.0.0.1',
