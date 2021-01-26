@@ -196,7 +196,7 @@ class Anonymizer
                     }
                     $promises[] = $this->updateByPrimary(
                         $blueprint,
-                        Helpers\GeneralHelper::arrayOnly($blueprint->columns, [$primaryKey]),
+                        Helpers\GeneralHelper::arrayOnly($row, [$primaryKey]),
                         $blueprint->columns,
                         $rowNum,
                         $row);
