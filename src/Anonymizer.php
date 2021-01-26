@@ -43,10 +43,12 @@ class Anonymizer
     /**
      * Constructor.
      *
-     * @param mixed             $generator
+     * @param mixed $generator
+     * @param string $configPath
      */
-    public function __construct($generator = null)
+    public function __construct($generator = null, string $configPath = '')
     {
+        $this->setConfigPath($configPath);
     	$this->load_config();
         $this->load_helpers();
 
