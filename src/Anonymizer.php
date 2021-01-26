@@ -280,7 +280,7 @@ class Anonymizer
     /**
      * Update a line by primary key given
      *
-     * @param array $blueprint
+     * @param Blueprint $blueprint
      * @param array $primaryKeyValues
      * @param array $columns
      * @param int $rowNum
@@ -288,7 +288,7 @@ class Anonymizer
      *
      * @return promise
      */
-    public function updateByPrimary($blueprint, $primaryKeyValues, $columns, $rowNum, $row)
+    public function updateByPrimary(Blueprint $blueprint, $primaryKeyValues, $columns, $rowNum, $row)
     {
         $where = $this->buildWhereForArray($primaryKeyValues);
 
