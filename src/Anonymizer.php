@@ -294,8 +294,14 @@ class Anonymizer
 
         $set = $this->buildSetForArray($columns, $rowNum, $row);
 
+        $joins = implode(PHP_EOL, $blueprint->getJoins());
         $sql = "UPDATE
-                    {$blueprint->table}
+                    {$blueprint->table}";
+        if(!empty($$joins)){
+            $sql .= $joins;
+        }
+
+        $sql .= "
                 SET
                     {$set}
                 WHERE

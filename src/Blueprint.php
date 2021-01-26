@@ -60,6 +60,9 @@ class Blueprint
      */
     public $triggers = [];
 
+
+    protected $joins = [];
+
     /**
      * Callback that builds blueprint.
      *
@@ -245,5 +248,26 @@ class Blueprint
         $this->primary = (array) $key;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getJoins(): array
+    {
+        return $this->joins;
+    }
+
+    /**
+     * @param array $joins
+     */
+    public function setJoins(array $joins): void
+    {
+        $this->joins = $joins;
+    }
+
+    public function addJoin(string $join):void
+    {
+        $this->joins[] = $join;
     }
 }
