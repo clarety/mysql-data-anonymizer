@@ -297,7 +297,7 @@ class Anonymizer
         $joins = implode(PHP_EOL, $blueprint->getJoins());
         $sql = "UPDATE
                     {$blueprint->table}";
-        if(!empty($$joins)){
+        if(!empty($joins)){
             $sql .= $joins;
         }
 
