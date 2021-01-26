@@ -298,7 +298,7 @@ class Anonymizer
         $sql = "UPDATE
                     {$blueprint->table}";
         if(!empty($joins)){
-            $sql .= $joins;
+            $sql .= ' '.$joins;
         }
 
         $sql .= "
