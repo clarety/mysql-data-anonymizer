@@ -8,6 +8,11 @@ use Amp\Mysql;
 use Exception;
 use Globalis\MysqlDataAnonymizer\Helpers;
 
+/**
+ * Class Anonymizer
+ * @package Globalis\MysqlDataAnonymizer
+ * @todo refactoring shitty code
+ */
 class Anonymizer
 {
     /**
@@ -185,9 +190,13 @@ class Anonymizer
                 //Update every line selected
                 while (yield $selectData->advance()) {
                     $row = $selectData->getCurrent();
+                    $primaryKey = $blueprint->primary[0];
+                    if (false !== strpos($primaryKey, '.')) {
+                        $primaryKey = explode('.', $primaryKey)[1];
+                    }
                     $promises[] = $this->updateByPrimary(
                         $blueprint,
-                        Helpers\GeneralHelper::arrayOnly($row, $blueprint->primary),
+                        Helpers\GeneralHelper::arrayOnly($blueprint->columns, [$primaryKey]),
                         $blueprint->columns,
                         $rowNum,
                         $row);
@@ -385,7 +394,7 @@ class Anonymizer
             }
 
             if (empty($column['where'])) {
-                $set[] = "{$column['name']}='{$row[$column['name']]}'";
+                $set[] = "{$column['name']}=". ($row[$column['name']] !== null ? "'".addslashes($row[$column['name']]) . "'" : 'null');
             } else {
                 $set[] = "{$column['name']}=(
                     CASE 
