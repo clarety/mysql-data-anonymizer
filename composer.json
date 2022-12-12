@@ -14,7 +14,7 @@
     ],
     "require": {
     	"php": ">=7.2",
-        "amphp/mysql": "^1.1",
+        "amphp/mysql": "^2.1",
         "fzaninotto/faker": "^1.8"
     },
     "autoload": {
