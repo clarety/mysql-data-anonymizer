@@ -20,9 +20,9 @@
         }
     ],
     "require": {
-    	"php": ">=8.1",
+    	"php": ">=8.0",
         "amphp/mysql": "^2.1",
-        "fzaninotto/faker": "dev-master"
+        "fzaninotto/faker": "1.9.2@dev"
     },
     "autoload": {
         "psr-4": { "Globalis\\MysqlDataAnonymizer\\": "src/" }
