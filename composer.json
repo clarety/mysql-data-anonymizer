@@ -12,10 +12,17 @@
             "email": "info@php-dev.info"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/fzaninotto/Faker",
+            "only": ["fzaninotto/faker"]
+        }
+    ],
     "require": {
     	"php": ">=8.1",
         "amphp/mysql": "^2.1",
-        "fzaninotto/faker": "1.9.2"
+        "fzaninotto/faker": "dev-master"
     },
     "autoload": {
         "psr-4": { "Globalis\\MysqlDataAnonymizer\\": "src/" }
