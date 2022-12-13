@@ -22,7 +22,7 @@
     "require": {
     	"php": ">=8.0",
         "amphp/mysql": "^2.1",
-        "fzaninotto/faker": "1.9.2@dev"
+        "fakerphp/faker": "^1.2"
     },
     "autoload": {
         "psr-4": { "Globalis\\MysqlDataAnonymizer\\": "src/" }
